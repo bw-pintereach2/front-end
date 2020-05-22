@@ -1,5 +1,47 @@
 import React, {useState } from 'react';
+import styled from 'styled-components';
 
+const Summary = styled.div`
+{
+    border: 1px solid white;
+    padding: 2% 0;
+    color: pink;
+}`
+
+const Category = styled.div`
+{
+    padding: 5% 0;
+    background-color: lavender;
+    font-size: 1.5rem;
+    color: blue;
+    margin: 5%;
+}`
+
+const Url = styled.div`
+{
+    width: 100%;
+    margin-top: 5%;
+    background-color: orange;
+}`
+
+const Author = styled.div`
+{
+    width: 100%;
+    background-color: lime;
+    margin-top: 5%;
+}`
+
+const Article = styled.div`
+{
+    width: 100%;
+    background-color: pink;
+    margin-top: 5%;
+}`
+
+const Headline = styled.h1`
+{
+    text-decoration: underline white dashed;
+}`
 
 const Form = () => {
     // const [users, setUsers] = useState();
@@ -18,6 +60,8 @@ const Form = () => {
     return (
 
         <form onSubmit>
+            <Headline>Article Input Area</Headline>
+            <Article>
             <label htmlFor="title">
                 Title:  
                  <input
@@ -25,22 +69,27 @@ const Form = () => {
                     name="title"
                     value={formState.title}/>
             </label>
+            </Article>
+            <Author>
             <label htmlFor="author">
                 Author: 
                  <input
                     type="text"
                     name="author"
                     value={formState.author}/>
-            </label>
+            </label> 
+            </Author>
+            <Url className="url">
             <label htmlFor="link">
                 URL: 
                 <input
                     type="url"
                     name="link"
                     value={formState.link}/>
-
-            </label>
-            <div className="category">
+        
+                </label>
+                </Url>
+            <Category className="category">
             <label htmlFor="category">
                 Category
                 <select name="category" id="category">
@@ -52,8 +101,8 @@ const Form = () => {
                 </select>  
 
                 </label>
-            </div>
-            <div className="notes">
+            </Category>
+            <Summary className="notes">
             <label htmlFor="notes">
                 Summary/Keywords
                 <textarea
@@ -61,7 +110,7 @@ const Form = () => {
                     value={formState.notes}/>
 
             </label>
-            </div>
+            </Summary>
 
 
         </form> 
