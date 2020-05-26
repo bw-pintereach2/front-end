@@ -27,6 +27,7 @@ const Url = styled.div`
 const Author = styled.div`
 {
     width: 100%;
+    font-size: 1.5rem;
     background-color: lime;
     margin-top: 5%;
 }`
@@ -34,6 +35,7 @@ const Author = styled.div`
 const Article = styled.div`
 {
     width: 100%;
+    font-size: 1.5rem;
     background-color: pink;
     margin-top: 5%;
 }`
@@ -41,6 +43,11 @@ const Article = styled.div`
 const Headline = styled.h1`
 {
     text-decoration: underline white dashed;
+}`
+
+const Topsection = styled.section`
+{
+    width: 100%;
 }`
 
 const Form = () => {
@@ -53,21 +60,41 @@ const Form = () => {
         notes: ""
     });
 
+    const validate = e => {
+        let value = e.target.name === "name";
+        setFormState({ ...formState, [e.target.name]: value });
+    };
 
+    const inputChange = (e) => {
+        e.persist();
+
+        validate(e);
+        let value =
+            e.target.type === "name" ? e.target.name : e.target.value;
+        setFormState({ ...formState, [e.target.name]: value });
+    };
+
+    const formSubmit = e => {
+        e.preventDefault();
+        console.log("form submitted!");
+
+    };
 
 
 
     return (
 
-        <form onSubmit>
+        <form onSubmit={formSubmit}>
             <Headline>Article Input Area</Headline>
+            <Topsection>
             <Article>
             <label htmlFor="title">
                 Title:  
                  <input
                     type="text"
                     name="title"
-                    value={formState.title}/>
+                    value={formState.title} 
+                    onChange={inputChange}/>        
             </label>
             </Article>
             <Author>
@@ -76,16 +103,19 @@ const Form = () => {
                  <input
                     type="text"
                     name="author"
-                    value={formState.author}/>
+                    value={formState.author}
+                    onChange={inputChange}/>
             </label> 
-            </Author>
+                </Author>
+                </Topsection>
             <Url className="url">
             <label htmlFor="link">
                 URL: 
                 <input
                     type="url"
                     name="link"
-                    value={formState.link}/>
+                    value={formState.link}
+                    onChange={inputChange}/>
         
                 </label>
                 </Url>
@@ -107,11 +137,13 @@ const Form = () => {
                 Summary/Keywords
                 <textarea
                     name="notes"
-                    value={formState.notes}/>
+                    value={formState.notes}
+                    onChange={inputChange}/>
 
             </label>
             </Summary>
 
+            <button>Add to reading list.</button>
 
         </form> 
     )
