@@ -9,14 +9,14 @@ const Card = styled.div`
     padding: 2%;
 }`
 
-const articleCard = () => {
+const articleCard = (props) => {
 
     return (
         <Card className="articlecard">
-            <h2>Title: </h2>
-            <h3>Author</h3>
-            <h4>Link</h4>
-            <p>Summary/Keywords</p>
+            <h2>Title: {props.title} </h2>
+            <h3>Author: {props.author}</h3>
+            <h4>Link - {props.link} </h4>
+            <p>Summary/Keywords: {props.notes}</p>
 
         </Card>
 
