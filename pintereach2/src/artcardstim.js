@@ -13,10 +13,9 @@ const articleCard = (props) => {
 
     return (
         <Card className="articlecard">
-            <h2>Title: {props.title} </h2>
-            <h3>Author: {props.author}</h3>
-            <h4>Link - {props.link} </h4>
-            <p>Summary/Keywords: {props.notes}</p>
+            <h2>Title: {props.article_title} </h2>
+            <h4>Link - {props.article_link} </h4>
+            <p>Summary/Keywords: {props.article_notes}</p>
 
         </Card>
 

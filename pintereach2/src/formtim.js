@@ -15,34 +15,33 @@ const Category = styled.div`
     font-size: 1.5rem;
     color: blue;
     margin: 5%;
+    width: 50%;
+    margin: 2% 25%;
 }`
 
 const Url = styled.div`
 {
-    width: 100%;
-    margin-top: 5%;
+    width: 50%;
+    margin: 2% 25%;
     background-color: orange;
+    
+    
 }`
 
-const Author = styled.div`
-{
-    width: 100%;
-    font-size: 1.5rem;
-    background-color: lime;
-    margin-top: 5%;
-}`
 
 const Article = styled.div`
 {
-    width: 100%;
+    width: 50%;
     font-size: 1.5rem;
     background-color: pink;
-    margin-top: 5%;
+    margin: 2% 25%;
+    padding: 25%
+    text-align: center;
 }`
 
 const Headline = styled.h1`
 {
-    text-decoration: underline white dashed;
+    text-decoration: underline black dashed;
 }`
 
 const Topsection = styled.section`
@@ -53,11 +52,11 @@ const Topsection = styled.section`
 const Form = () => {
     // const [users, setUsers] = useState();
     const [formState, setFormState] = useState({
-        title: "",
-        author: "",
-        link: "",
-        category: "",
-        notes: ""
+        article_title: "",
+        
+        article_link: "",
+        category_title: "",
+        article_notes: ""
     });
 
     const validate = e => {
@@ -97,16 +96,7 @@ const Form = () => {
                     onChange={inputChange}/>        
             </label>
             </Article>
-            <Author>
-            <label htmlFor="author">
-                Author: 
-                 <input
-                    type="text"
-                    name="author"
-                    value={formState.author}
-                    onChange={inputChange}/>
-            </label> 
-                </Author>
+           
                 </Topsection>
             <Url className="url">
             <label htmlFor="link">
@@ -122,7 +112,7 @@ const Form = () => {
             <Category className="category">
             <label htmlFor="category">
                 Category
-                <select name="category" id="category">
+                <select name="category_title" id="category">
                     <option value="category A">Category A</option>
                     <option value="category B">Category B</option>
                     <option value="category C">Category C</option>

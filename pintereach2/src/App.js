@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ArticleCard from './artcards.js';
-import Form from  './form.js'
+import ArticleCard from './artcardstim.js';
+import Form from  './formtim.js'
 
 
 function App() {
