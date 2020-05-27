@@ -6,6 +6,7 @@ const Summary = styled.div`
     border: 1px solid white;
     padding: 2% 0;
     color: pink;
+    margin: 0 30%;
 }`
 
 const Category = styled.div`
@@ -14,9 +15,9 @@ const Category = styled.div`
     background-color: lavender;
     font-size: 1.5rem;
     color: blue;
-    margin: 5%;
-    width: 50%;
-    margin: 2% 25%;
+    width: 25%;
+    margin: 2% 35%;
+    text-align: center;
 }`
 
 const Url = styled.div`
@@ -42,11 +43,17 @@ const Article = styled.div`
 const Headline = styled.h1`
 {
     text-decoration: underline black dashed;
+    text-align: center;
 }`
 
 const Topsection = styled.section`
-{
     width: 100%;
+}`
+
+const Button = styled.button`
+{
+    margin: 0 45%;
+
 }`
 
 const Form = () => {
@@ -133,7 +140,7 @@ const Form = () => {
             </label>
             </Summary>
 
-            <button>Add to reading list.</button>
+            <Button>Add to reading list.</Button>
 
         </form> 
     )
