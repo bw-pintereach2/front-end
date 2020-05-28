@@ -12,18 +12,18 @@ const Card = styled.div`
 
 const ArticleCard = props => {
 
-    // const [articles, setArticles] = useState([])
-    // useEffect(() => {
-    //     axios
-    //       .get("http:/api/categories/:id")
-    //       .then((response) => {
-    //         console.log("response here", response);
-    //         setArticles(response.data);
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
-    // }, []);
+     const [articles, setArticles] = useState([])
+     useEffect(() => {
+         axios
+             .get('https://pintereach2-backend.herokuapp.com/')
+           .then((response) => {
+             console.log("response here", response);
+             setArticles(response.data);
+           })
+           .catch((error) => {
+            console.log(error);
+           });
+    }, []);
 
     return (
         <Card className="articlecard">

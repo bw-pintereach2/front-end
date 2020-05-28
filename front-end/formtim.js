@@ -83,7 +83,10 @@ const Form = () => {
     const formSubmit = e => {
         e.preventDefault();
         console.log("form submitted!");
-
+        axios
+            .post("https://pintereach2-backend.herokuapp.com/", formState)
+            .then(response => console.log(response))
+            .catch(err => console.log(err));
     };
 
 
