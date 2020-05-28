@@ -51,8 +51,7 @@ const Home = props => {
   return (
     <>
       <h1>Pintereach2</h1>
-      <h3>Subheader goes here</h3>
-
+      
       <div
         style={{
           display: "flex",
@@ -60,7 +59,7 @@ const Home = props => {
           alignItems: "center"
         }}
       >
-        <h4 style={{ color: "red" }}>Login or Signup?</h4>
+        <h4 style={{ color: "blue" }}>Login or Signup?</h4>
         <FormControl component="fieldset" className={classes.formControl}>
           <RadioGroup
             aria-label="Login or Signup?"
