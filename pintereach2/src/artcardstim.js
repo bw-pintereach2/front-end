@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const Card = styled.div`
 {
@@ -9,7 +10,20 @@ const Card = styled.div`
     padding: 2%;
 }`
 
-const articleCard = (props) => {
+const ArticleCard = props => {
+
+    // const [articles, setArticles] = useState([])
+    // useEffect(() => {
+    //     axios
+    //       .get("http:/api/categories/:id")
+    //       .then((response) => {
+    //         console.log("response here", response);
+    //         setArticles(response.data);
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    // }, []);
 
     return (
         <Card className="articlecard">
@@ -23,4 +37,4 @@ const articleCard = (props) => {
 };
 
 
-export default articleCard;
+export default ArticleCard;

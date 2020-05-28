@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import ArticleCard from './artcardstim.js';
 import Form from  './formtim.js'
@@ -8,9 +8,9 @@ import Form from  './formtim.js'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-          <Form />
+      {/* <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" /> */}
+          <Form /> 
           <ArticleCard />
         
         {/* <a
@@ -21,7 +21,7 @@ function App() {
         >
           Learn React
         </a> */}
-      </header>
+      {/* </header> */}
     </div>
   );
 }
