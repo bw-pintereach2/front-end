@@ -6,15 +6,12 @@ import { Route, Link } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import Home from "./components/Home";
-<<<<<<< HEAD
 import SignUp from './components/Register';
 import Login from './components/Login';
 //import Dashboard from './components/Dashboard';
 // import Nav from './components/Nav';
 // import PrivateRoute from "./components/PrivateRoute";
-=======
 // StuDash from "./components/Dashboards/StuDash";
->>>>>>> parent of 77ee5094... updates
 
 import { fetchCategories } from "./actions/categories";
 
