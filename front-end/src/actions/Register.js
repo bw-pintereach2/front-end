@@ -1,10 +1,16 @@
-import { axiosWithAuth } from "../util/axiosWithAuth";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 export const SIGN_UP_START = "SIGN_UP_START";
 
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 
 export const SIGN_UP_ERROR = "SIGN_UP_ERROR";
+
+export const REGISTER_ERROR = "REGISTER_ERROR"
+
+export const REGISTER_START = "REGISTER_START"
+
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS"
 
 
 

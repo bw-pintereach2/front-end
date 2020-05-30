@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Signup from "./Signup";
-import Signin from "./Signin";
+import Signup from "./Register";
+import Signin from "./Login";
 
 import { Route } from "react-router-dom";
 
@@ -12,6 +12,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import { Segment, Image, Rail } from 'semantic-ui-react'
 
 import Button from "@material-ui/core/Button";
 
@@ -25,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Home = props => {
-  
+
   //Holds Visit Type (i.e. if user wants to login or signup)
   const [visitType, setVisitType] = useState();
 
@@ -50,6 +51,17 @@ const Home = props => {
 
   return (
     <>
+      <Segment>
+        <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+
+        <Rail attached internal position='left'>
+          <Segment>Left Rail Content</Segment>
+        </Rail>
+
+        <Rail attached internal position='right'>
+          <Segment>Right Rail Content</Segment>
+        </Rail>
+      </Segment>
       <h1>Pintereach2</h1>
       <h3>Subheader goes here</h3>
 
@@ -91,3 +103,4 @@ const Home = props => {
 };
 
 export default Home;
+

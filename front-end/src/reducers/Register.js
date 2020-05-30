@@ -2,7 +2,7 @@ import {
     REGISTER_START,
     REGISTER_SUCCESS,
     REGISTER_ERROR,
-} from "../actions/usersRegister";
+} from "../actions/Register";
 
 const initialState = {
     isLoading: false,

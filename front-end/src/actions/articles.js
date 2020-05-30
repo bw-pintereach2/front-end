@@ -1,4 +1,4 @@
-import { axiosWithAuth } from "../util/axiosWithAuth";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 export const FETCH_DATA_START = "SIGN_IN_START";
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
@@ -7,6 +7,7 @@ export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
 export const GET_ARTICLE = "GET_ARTICLE";
 export const POST_ARTICLE = "POST_ARTICLE";
 export const DELETE_ARTICLE = "DELETE_ARTICLE";
+export const POST_DATA_FAILURE = "POST_DATA_FAILURE"
 
 
 export const getArticles = () => (dispatch) => {
@@ -26,8 +27,7 @@ export const getArticles = () => (dispatch) => {
 };
 
 export const addArticle = newArticle => (dispatch) => {
-   console.log(values);
-    dispatch({ type: ACTION_START });
+    dispatch({ type: POST_ARTICLE });
 
     axiosWithAuth()
         .post("/articles", {
