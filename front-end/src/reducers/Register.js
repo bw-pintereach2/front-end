@@ -1,8 +1,9 @@
 import {
-    REGISTER_START,
-    REGISTER_SUCCESS,
-    REGISTER_ERROR,
-} from "../actions/usersRegister";
+    REGISTRATION_START,
+    REGISTRATION_SUCCESS,
+    REGISTRATION_ERROR,
+
+} from "../actions/Register";
 
 const initialState = {
     isLoading: false,
@@ -10,31 +11,15 @@ const initialState = {
     message: null,
 };
 
-export function usersRegister(state = initialState, action) {
+export function Register(state = initialState, action) {
     switch (action.type) {
-        case REGISTER_START:
-            return {
-                ...state,
-                isLoading: true,
-                isLoaded: false,
-            };
-        case REGISTER_SUCCESS:
-            return {
-                ...state,
-                isLoading: false,
-                isLoaded: true,
-                message: action.payload,
-            };
-        case REGISTER_ERROR:
-            return {
-                ...state,
-                isLoading: false,
-                isLoaded: false,
-                message: action.payload,
-
-           };
+        case REGISTRATION_START:
+            return { ...state, isLoading: true, isLoaded: false};
+        case REGISTRATION_SUCCESS:
+            return { ...state, isLoading: false, isLoaded: true, message: action.payload};
+        case REGISTRATION_ERROR:
+            return { ...state, isLoading: false, isLoaded: false, message: action.payload};
        default:
-
           return state;
     }
 }

@@ -5,17 +5,18 @@ import {
 } from "../actions/Login";
 
 const initialState = {
-   isLoading: false,
+    user: null,
+    isLoading: false,
     isLoaded: false,
     message: null,
 };
 
-export function usersLogin(state = initialState, action) {
+export function Login(state = initialState, action) {
     switch (action.type) {
         case LOGIN_START:
             return {...state, isLoading: true, isLoaded: false};
         case LOGIN_SUCCESS:
-            return {...state, isLoading: false, isLoaded: true, message: action.payload};
+            return {...state, isLoading: false, isLoaded: true, user: action.payload.users, message: action.payload};
         case LOGIN_ERROR:
             return {...state, isLoading: false, isLoaded: false, message: action.payload};
         default:

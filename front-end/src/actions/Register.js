@@ -1,55 +1,28 @@
-import { axiosWithAuth } from "../util/axiosWithAuth";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-export const SIGN_UP_START = "SIGN_UP_START";
-
-export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
-
-export const SIGN_UP_ERROR = "SIGN_UP_ERROR";
-
-
+export const REGISTRATION_START = "REGISTRATION_START";
+export const REGISTRATION_SUCCESS = "REGISTRATION_SUCCESS";
+export const REGISTRATION_ERROR = "REGISTRATION_ERROR";
 
 export const registerUser = (values) => (dispatch) => {
-
-    dispatch({ type: SIGN_UP_START });
-
-    console.log("register state values", values);
-
+    dispatch({ type: REGISTRATION_START });
+    console.log("registration", values);
     axiosWithAuth()
-
         .post("/auth/register", values)
-
         .then((res) => {
-
             //console.log(res);
-
             dispatch({
-
-                type: SIGN_UP_SUCCESS,
-
-                payload: "Successfully added new user..",
-
+                type: REGISTRATION_SUCCESS,
+                payload: "Successfully registered",
             });
-
         })
-
         .catch((err) => {
-
             console.log("Err is: ", err);
-
-            dispatch({
-
-                type: SIGN_UP_ERROR,
-
-                payload:
-
-                    err.response.status === 404
-
-                        ? "Login details invalid"
-
-                        : "Error in sign up process..",
-
+           dispatch({
+                type: REGISTRATION_ERROR,
+                payload: err.response.status === 404
+                    ? "Login details invalid"
+                    : "Error",
             });
-
         });
-
 };
