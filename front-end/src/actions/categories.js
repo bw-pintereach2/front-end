@@ -25,7 +25,7 @@ export const getCategories = () => (dispatch) => {
 };
 
 export const addCategory = (newCategory ) => (dispatch) => {
-    console.log(newArticle);
+    console.log(newCategory);
     dispatch({ type: FETCH_DATA_START });
     axiosWithAuth()
         .post("/categories", {

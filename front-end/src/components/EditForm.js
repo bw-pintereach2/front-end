@@ -5,16 +5,15 @@ import * as yup from "yup";
 import { getArticlesByCategory } from "../actions/articles";
 import { getCategories } from "../actions/categories";
 import { editArticle } from "../actions/articles";
-import Sidebar from "./Sidebar";
-import Header from "./Header";
+import Navbar from "./Dashboard/NavBar";
+
 
 const EditForm = (props) => {
     const {
         getCategories,
-        getArticleById,
-       editArticle,
-       // isLoading,
-       isLoaded,
+        getArticlesByCategory,
+        editArticle,
+        isLoaded,
         article,
         message,
         categories,
@@ -56,16 +55,12 @@ const EditForm = (props) => {
 
     const getActiveCategories = useCallback(() => {
         let temp = [];
-        //console.log("formState article", article);
-
+       
         let activeCategories = article.categories.map((category) => {
             return category.category_name;
         });
 
         if (isLoaded) {
-            //console.log("formState categories", props.categories);
-            //console.log("active categories", activeCategories);
-
             for (let i = 0; i < activeCategories.length; i++) {
                 for (let j = 0; j < props.categories.length; j++) {
                     if (
@@ -279,10 +274,9 @@ const EditForm = (props) => {
     );
 ;
 
-// hook up the connect to our store
+
 const mapStateToProps = (state) => {
-    //console.log("edit form state", state);
-  return {
+   return {
        isLoading: state.articles.isLoading,
         isLoaded: state.articles.isLoaded,
         article: state.articles.article,
@@ -291,8 +285,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {
-    getCategories,
-    getArticlesByCategory,
-    editArticle,
-})(EditForm)};
+export default connect(mapStateToProps, { getCategories, getArticlesByCategory, editArticle })(
+    EditForm
+)};

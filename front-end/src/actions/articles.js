@@ -5,6 +5,7 @@ export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
 
 export const GET_ARTICLE = "GET_ARTICLE";
+export const GET_ARTICLES_BY_ID = "GET_ARTICLES_BY_ID";
 export const POST_ARTICLE = "POST_ARTICLE";
 export const EDIT_ARTICLE = "EDIT_ARTICLE";
 export const DELETE_ARTICLE = "DELETE_ARTICLE";
@@ -31,7 +32,7 @@ export const getArticles = () => (dispatch) => {
     };
 
     export const getArticlesByCategory = (id) => (dispatch) => {
-            dispatch({ type: ACTION_START });
+            dispatch({ type: FETCH_DATA_START });
             axiosWithAuth()
                 .get(`/articles/category_id/${id}`)
                 .then((res) => {
@@ -42,7 +43,7 @@ export const getArticles = () => (dispatch) => {
                     .catch((err) => {
                         //console.log("Err is: ", err);
                         dispatch({
-                            type: ACTION_ERROR,
+                            type: FETCH_DATA_FAILURE,
                             payload:
                                 err.response.status === 404
                                     ? "No articles related to this category..."
