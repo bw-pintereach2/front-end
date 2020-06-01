@@ -4,9 +4,10 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Summary = styled.div`
 	border: 1px solid white;
+	font-size: 1.5rem;
 	padding: 2% 0;
-	color: pink;
-	margin: 0 30%;
+	background-color: lime;
+	margin: 5% 30%;
 `;
 
 const Category = styled.div`
@@ -15,22 +16,31 @@ const Category = styled.div`
 	font-size: 1.5rem;
 	color: blue;
 	width: 25%;
-	margin: 2% 35%;
+
 	text-align: center;
 `;
 
 const Url = styled.div`
 	width: 50%;
 	margin: 2% 25%;
-	background-color: orange;
+	font-size: 1.5rem;
+	background-color: yellow;
 `;
 
 const Article = styled.div`
 	width: 50%;
 	font-size: 1.5rem;
-	background-color: pink;
+	background-color: darkgrey;
 	margin: 2% 25%;
-	padding: 25%;
+
+	text-align: center;
+`;
+
+const Publisher = styled.div`
+	width: 50%;
+	font-size: 1.5rem;
+	background-color: dodgerblue;
+	margin: 2% 25%;
 	text-align: center;
 `;
 
@@ -45,6 +55,7 @@ const Topsection = styled.section`
 
 const Button = styled.button`
 	margin: 0 45%;
+	padding: 1%;
 `;
 
 const Form = (props) => {
@@ -105,15 +116,17 @@ const Form = (props) => {
 						/>
 					</label>
 				</Article>
-				<label htmlFor="title">
-					Publisher:
-					<input
-						type="text"
-						name="publisher"
-						value={formState.publisher}
-						onChange={inputChange}
-					/>
-				</label>
+				<Publisher>
+					<label htmlFor="title">
+						Publisher:
+						<input
+							type="text"
+							name="publisher"
+							value={formState.publisher}
+							onChange={inputChange}
+						/>
+					</label>
+				</Publisher>
 			</Topsection>
 			<Url className="url">
 				<label htmlFor="link">

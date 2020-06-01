@@ -7,8 +7,9 @@ import AddCard from "./formtim";
 const Card = styled.div`
 	background-color: teal;
 	border: 5px dodgerblue;
-	margin: 2%;
+	margin: 3% 36%;
 	padding: 2%;
+	width: 30%;
 `;
 
 const ArticleCard = (props) => {
