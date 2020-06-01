@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { postArticle } from "../actions/articles";
-import { getCategories } from "../actions/articles";
+import { addArticle } from "../actions/articles";
+import { getCategories } from "../actions/categories";
 import { Container, Grid, Form, Button, Dropdown, Message } from "semantic-ui-react";
 import * as yup from "yup";
 import Navbar from "./Dashboard/NavBar";
 
 const AddForm = ({
-    postArticle,
+    addArticle,
     getCategories,
-    // isLoading,
-    // isLoaded,
     message,
     categories,
 }) => {
@@ -83,8 +81,7 @@ const AddForm = ({
 
     const submitForm = (e) => {
         e.preventDefault();
-        //console.log(formState);
-        postArticle(formState);
+        addArticle(formState);
         setFormState({
             url: "",
             title: "",
@@ -96,11 +93,10 @@ const AddForm = ({
 
     return (
         <Container className="dashboard">
-            <Header />
+            <Navbar />
 
           <Grid columns={2} divided>
                 <Grid.Row>
-                    <Sidebar />
                     <Grid.Column width={10}>
                         <Grid columns={4} className="articles-form">
                             {message ? (
@@ -238,26 +234,21 @@ const AddForm = ({
                                 </Button>
                             </Form>
                         </Grid>
-                        {/* <pre>{JSON.stringify(formState, null, 2)}</pre> */}
-
-                  </Grid.Column>
+                    </Grid.Column>
                 </Grid.Row>
             </Grid>
         </Container>
     );
 };
 
-// hook up the connect to our store
+
 const mapStateToProps = (state) => {
-    //console.log("add form state", state);
     return {
-       // isLoading: state.articles.isLoading,
-        // isLoaded: state.articles.isLoaded,
         message: state.articles.message,
-       categories: state.articles.categories,
+        categories: state.articles.categories,
    };
 };
 
-export default connect(mapStateToProps, { postArticle, getCategories })(
+export default connect(mapStateToProps, { addArticle, getCategories })(
     AddForm
 );

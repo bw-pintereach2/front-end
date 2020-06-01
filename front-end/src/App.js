@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Articles from "./components/Articles"
-//import AddForm from "./components/Articles/AddForm";
-//import EditForm from "./components/Articles/EditForm";
-//import ProtectedRoute from "./components/Articles/ProtectedRoute";
+import AddForm from "./components/AddForm";
+import EditForm from "./components/EditForm";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
     return (
@@ -30,19 +30,19 @@ function App() {
                        path="/logout"
                        render={(props) => <Login {...props} />}
                     />
-                   {/* <ProtectedRoute exact path="/articles" component={Articles} /> */}
-                   {/* <ProtectedRoute
+                   <ProtectedRoute exact path="/articles" component={Articles} /> */}
+                   { <ProtectedRoute
                     exact path="/articles/category/:id"
                     component={ArticlesByCategory}
-                    /> */}
-                    {/* <ProtectedRoute
+                    /> }
+                    { <ProtectedRoute
                         exact path="/add-article"
                         component={AddForm}
-                    /> */}
-                    {/* <ProtectedRoute
+                    /> }
+                    { <ProtectedRoute
                      exact path="/edit-article/:id"
                      component={EditForm}
-                    /> */}
+                    />}
                </Switch>
             </div>
         </Router>
