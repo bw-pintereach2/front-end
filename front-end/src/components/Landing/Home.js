@@ -25,25 +25,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Home = props => {
-  
-  //Holds Visit Type (i.e. if user wants to login or signup)
   const [visitType, setVisitType] = useState();
-
-  //Holds Login Radio Change
   const [login, setLogin] = useState(0);
-
-  //Holds Signup Radio Change
   const [signup, setSignup] = useState(0);
-
-  //CSS Styling for Buttons via Material.ui
   const classes = useStyles();
-
-  //Onclick push to relevant page
   const handleClick = () => {
     props.history.push("/register");
   };
 
-  //Handles Radio Button Change
   const handleVisitChange = e => {
     setVisitType(e.target.value);
   };
@@ -68,11 +57,7 @@ const Home = props => {
             onChange={handleVisitChange}
           >
             <FormControlLabel value="login" control={<Radio />} label="Login" />
-            <FormControlLabel
-              value="signup"
-              control={<Radio />}
-              label="Signup"
-            />
+            <FormControlLabel value="signup" control={<Radio />} label="Signup" />
           </RadioGroup>
         </FormControl>
 

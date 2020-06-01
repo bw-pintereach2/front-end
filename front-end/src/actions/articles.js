@@ -6,57 +6,82 @@ export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
 
 export const GET_ARTICLE = "GET_ARTICLE";
 export const POST_ARTICLE = "POST_ARTICLE";
+export const EDIT_ARTICLE = "EDIT_ARTICLE";
 export const DELETE_ARTICLE = "DELETE_ARTICLE";
 
 
 export const getArticles = () => (dispatch) => {
-    dispatch({ type: FETCH_DATA_START });
-    axiosWithAuth()
-        .get("/articles")
-        .then((res) => {
-            dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
-        })
-        .catch((err) => {
-            console.log(err.response);
-            dispatch({
-                type: FETCH_DATA_FAILURE,
-                payload: `${err.response.status} ${err.response.data}`,
+        dispatch({ type: FETCH_DATA_START });
+        axiosWithAuth()
+            .get("/articles")
+            .then((res) => {
+                dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
+            })
+            .catch((err) => {
+                console.log(err.response);
+                dispatch({
+                    type: FETCH_DATA_FAILURE,
+                    payload: `${err.response.status} ${err.response.data}`,
+                });
             });
-        });
-};
+    };
 
-export const addArticle = newArticle => (dispatch) => {
-   console.log(values);
-    dispatch({ type: ACTION_START });
+    export const addArticle = (newArticle) => (dispatch) => {
+        console.log(newArticle);
+        dispatch({ type: FETCH_DATA_START });
+        axiosWithAuth()
+            .post("/articles", {
+                id: Date.now(),
+                user_id: localStorage.getItem("user"),
+                name: newArticle.article_title,
+                url: newArticle.article_link,
+                description: newArticle.article_notes,
+                categories: newArticle.category_id,
+            })
+            .then((res) => {
+                dispatch({ type: POST_ARTICLE, payload: res.data});
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({ type: FETCH_DATA_FAILURE, payload: err });
+                });
+    };
 
-    axiosWithAuth()
-        .post("/articles", {
-            id: Date.now(),
-            user_id: localStorage.getItem("user"),
-            name: newArticle.title,
-            url: newArticle.url,
-            description: newArticle.description,
-            categories: newArticle.categories,
-        })
-        .then((res) => {
-            dispatch({ type: POST_ARTICLE, payload: res.data});
-        })
-        .catch(err => {
-            console.log(err);
-            dispatch({ type: POST_DATA_FAILURE, payload: err });
+    export const editArticle = (id, values) => (dispatch) => {
+        console.log(values);
+        dispatch({ type: FETCH_DATA_START });
+        axiosWithAuth()
+            .put(`/articles/${id}`, {
+                name: values.article_title,
+                url: values.article_link,
+                description: values.article_notes,
+                categories: values.category_id,
+            })
+            .then((res) => {
+                dispatch({
+                    type: EDIT_ARTICLE,
+                    payload: { article: res.data, message: "edit complete" },
+                });
+            })
+            .catch((err) => {
+                dispatch({
+                    type: ACTION_ERROR,
+                    payload: "Error",
+                });
             });
-};
+    };
+
+    export const deleteArticle = (id) => (dispatch) => {
+        dispatch({ type: FETCH_DATA_START });
+        axiosWithAuth()
+            .delete(`/articles/${id}`)
+            .then((res) => {
+            window.location.reload(true);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
 
-export const deleteArticle = (id) => (dispatch) => {
-    dispatch({ type: DELETE_ARTICLE });
-
-    axiosWithAuth()
-        .delete(`/articles/${id}`)
-        .then((res) => {
-           window.location.reload(true);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-};
+    

@@ -1,4 +1,5 @@
-import { axiosWithAuth } from "../util/axiosWithAuth";
+import { axiosWithAuth } from "../../util/axiosWithAuth";
+
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
@@ -9,9 +10,9 @@ export const userLogin = (values, props) => (dispatch) => {
         .post("/auth/login", values)
         .then((res) => {
             localStorage.setItem("token", res.data.token);
-            localStorage.setItem("user", res.data.userId);
+            localStorage.setItem("user", res.data.user_id);
             props.history.push("/articles");
-            dispatch({ type: LOGIN_SUCCESS, payload: "Login Successful." });
+            dispatch({ type: LOGIN_SUCCESS, payload: "Login Successful.", user: res.data.welcome});
         })
         .catch((err) => {
             console.log(err);
@@ -23,3 +24,15 @@ export const userLogin = (values, props) => (dispatch) => {
 };
 
 
+// {
+//     username: "guitarllamama12",
+//     password: "!g0tap@ssword"
+//   },
+//   {
+//     username: "dooWop",
+//     password: "th@tT#!ng"
+//   },
+//   {
+//     username: "finalUser",
+//     password: "badpassword:("
+//   },
