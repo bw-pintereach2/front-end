@@ -1,4 +1,4 @@
-import { axiosWithAuth } from "../util/axiosWithAuth";
+import { axiosWithAuth } from "../utils/axiosWithAuth"
 
 export const FETCH_DATA_START = "SIGN_IN_START";
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
@@ -8,6 +8,10 @@ export const GET_ARTICLE = "GET_ARTICLE";
 export const POST_ARTICLE = "POST_ARTICLE";
 export const EDIT_ARTICLE = "EDIT_ARTICLE";
 export const DELETE_ARTICLE = "DELETE_ARTICLE";
+
+export const GET_CATEGORIES = "GET_CATEGORIES";
+export const POST_CATEGORY = "POST_CATEGORY";
+export const DELETE_CATEGORY = "DELETE_CATEGORY";
 
 
 export const getArticles = () => (dispatch) => {
@@ -25,6 +29,27 @@ export const getArticles = () => (dispatch) => {
                 });
             });
     };
+
+    export const getArticlesByCategory = (id) => (dispatch) => {
+            dispatch({ type: ACTION_START });
+            axiosWithAuth()
+                .get(`/articles/category_id/${id}`)
+                .then((res) => {
+                    //console.log("axios result by id", res);
+                    //console.log(res);
+                    dispatch({ type: GET_ARTICLES_BY_ID, payload: res.data });
+                })
+                    .catch((err) => {
+                        //console.log("Err is: ", err);
+                        dispatch({
+                            type: ACTION_ERROR,
+                            payload:
+                                err.response.status === 404
+                                    ? "No articles related to this category..."
+                                    : "Error in get request articles.",
+                        });
+                    });
+        };
 
     export const addArticle = (newArticle) => (dispatch) => {
         console.log(newArticle);
@@ -65,7 +90,7 @@ export const getArticles = () => (dispatch) => {
             })
             .catch((err) => {
                 dispatch({
-                    type: ACTION_ERROR,
+                    type: FETCH_DATA_FAILURE,
                     payload: "Error",
                 });
             });

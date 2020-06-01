@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Container, Grid, Card, Message } from "semantic-ui-react";
+import Sidebar from "./Sidebar";
 
-import { getArticles } from "../actions/articles";
-import { deleteArticle } from "../actions/articles";
-import Navbar from "./Dashboard/NavBar";
+import { getArticles } from "../../actions/articles";
+import { deleteArticle } from "../../actions/articles";
+import Navbar from "./NavBar";
 
 const Articles = ({
     getArticles,
@@ -17,11 +18,13 @@ const Articles = ({
         getArticles();
     }, [getArticles]);
 
+    //console.log("..", props.articles);
     return (
         <Container className="dashboard">
             <Navbar />
             <Grid columns={2} divided>
                 <Grid.Row>
+                    <Sidebar />
                     <Grid.Column width={13}>
                         {message ? (
                             <Message size="tiny" color="red">
@@ -79,8 +82,7 @@ const Articles = ({
                                     })
                                 ) : (
                                     <Message size="tiny" color="green">
-
-                                       <p>Loading articles..</p>
+                                        <p>Loading articles..</p>
                                     </Message>
                                 )}
                             </Grid.Row>
@@ -92,9 +94,11 @@ const Articles = ({
     );
 };
 
+// hook up the connect to our store
 const mapStateToProps = (state) => {
+    //console.log("article/dashboard state", state);
     return {
-       isLoading: state.articles.isLoading,
+        isLoading: state.articles.isLoading,
         isLoaded: state.articles.isLoaded,
         articles: state.articles.articles,
         message: state.articles.message,

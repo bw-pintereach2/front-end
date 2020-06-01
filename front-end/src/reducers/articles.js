@@ -42,9 +42,7 @@ export function article(state = initialState, action) {
             return { ...state, isLoading: false, isLoaded: true, article: action.payload.article, message: action.payload.message};        
         case DELETE_ARTICLE:
             return {...state, isLoading: false, isLoaded: true, message: action.payload};
-        default:
-            return state;
-
+        
     //categories
         case GET_CATEGORIES:
             return { ...state, categories: action.payload, isLoading: false, isLoaded: true};

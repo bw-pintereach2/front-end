@@ -4,7 +4,7 @@ import { registerUser } from "../../actions/Register";
 import { Container, Button, Form, Message } from "semantic-ui-react";
 import * as yup from "yup";
 
-const SignUp = (props) => {
+const Register = (props) => {
     const [user, setUser] = useState({
         first_name: "",
         last_name: "",
@@ -24,16 +24,16 @@ const SignUp = (props) => {
    const [buttonState, setButtonState] = useState();
 
     const formSchema = yup.object().shape({
-        first_name: yup.string().required("First Name is a required field"),
-       last_name: yup.string().required("Last Name is a required field"),
+        first_name: yup.string().required("First Name"),
+       last_name: yup.string().required("Last Name"),
         email: yup
             .string()
-            .email("Needs email format")
-            .required("Email is a required field"),
-        username: yup.string().required("Username is a required field"),
+            .email("email")
+            .required("Email is required"),
+        username: yup.string().required("Username"),
         password: yup
             .string()
-            .required("Password is a required field")
+            .required("Password is required")
             .min(6, "Passwords must be at least 6 characters long."),
     });
 
@@ -201,21 +201,20 @@ const SignUp = (props) => {
                   </Button>
                 </Form>
                 <p className="signUp-text">
-                    Already a member? <a href="/login">Login..</a>
+                    Already have an account? <a href="/login">Login..</a>
                 </p>
             </div>
         </Container>
     );
 };
 
-// hook up the connect to our store
 const mapStateToProps = (state) => {
     //console.log("sign up state", state);
     return {
-        isLoading: state.usersRegister.isLoading,
-        isLoaded: state.usersRegister.isLoaded,
-       message: state.usersRegister.message,
+        isLoading: state.Register.isLoading,
+        isLoaded: state.Register.isLoaded,
+       message: state.Register.message,
     };
 };
 
-export default connect(mapStateToProps, { registerUser })(SignUp);
+export default connect(mapStateToProps, { registerUser })(Register);

@@ -18,8 +18,8 @@ const Login = (props) => {
     const [buttonState, setButtonState] = useState();
 
     const formSchema = yup.object().shape({
-        username: yup.string().required("Name is a required field"),
-        password: yup.string().required("Password is a required field"),
+        username: yup.string().required("Name"),
+        password: yup.string().required("Password"),
     });
 
     const handleChange = (e) => {
@@ -54,7 +54,7 @@ const Login = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        props.checkUser(user, props);
+        props.userLogin(user, props);
         setUser({
             username: "",
             password: "",
@@ -68,7 +68,15 @@ const Login = (props) => {
                     aria-hidden="true"
                     className="brown linkify circular inverted icon"
                 ></i>
-                <h1>Pintereach</h1>
+                <h1>
+                    <a
+                        href="https://agitated-murdock-bb9582.netlify.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Pintereach
+                    </a>
+                </h1>
                 <Form onSubmit={submitHandler}>
                     {props.message ? (
                         <Message size="tiny" color="red" compact>
@@ -92,9 +100,9 @@ const Login = (props) => {
                             placeholder="Username"
                             value={user.username}
                             onChange={handleChange}
-                           required
+                            required
                         />
-                   </Form.Field>
+                    </Form.Field>
                     <Form.Field>
                         {errors.password ? (
                             <p className="error">
@@ -114,27 +122,26 @@ const Login = (props) => {
                             onChange={handleChange}
                             required
                         />
-                   </Form.Field>
+                    </Form.Field>
                     <Button type="submit" disabled={buttonState}>
                         Login
                     </Button>
                 </Form>
                 <p className="signUp-text">
-                   Not a member? <a href="/signup">Sign up..</a>
+                    Not a member? <a href="/register">Sign up..</a>
                 </p>
             </div>
         </Container>
     );
 };
 
-// hook up the connect to our store
 
 const mapStateToProps = (state) => {
-    console.log("login state", state);
-    return {
-        isLoading: state.usersLogin.isLoading,
-        isLoaded: state.usersLogin.isLoaded,
-        message: state.usersLogin.message,
+     return {
+        user: state.Login.user,
+        isLoading: state.Login.isLoading,
+        isLoaded: state.Login.isLoaded,
+        message: state.Login.message,
     };
 };
 
