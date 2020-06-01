@@ -7,7 +7,7 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 export const userLogin = (values, props) => (dispatch) => {
     dispatch({ type: LOGIN_START });
     axiosWithAuth()
-        .post("/auth/login", values)
+        .post("/login", values)
         .then((res) => {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user", res.data.user_id);

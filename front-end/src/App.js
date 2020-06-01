@@ -6,7 +6,8 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Articles from "./components/Articles"
 import AddForm from "./components/AddForm";
-import EditForm from "./components/EditForm";
+import ArticlesByCategory from "./components/ArticlesByCategory"
+//import EditForm from "./components/EditForm";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -39,10 +40,10 @@ function App() {
                         exact path="/add-article"
                         component={AddForm}
                     /> }
-                    { <ProtectedRoute
+                    {/* { <ProtectedRoute
                      exact path="/edit-article/:id"
                      component={EditForm}
-                    />}
+                    />} */}
                </Switch>
             </div>
         </Router>
