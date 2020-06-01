@@ -1,11 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const axiosWithAuth = () => {
-
-    return axios.create({
-        baseURL: "https://pintereach2-backend.herokuapp.com/",
-        headers: {
-            Authorization: localStorage.getItem("token")
-        },
-    });
+	return axios.create({
+		baseURL: "https://pintereach-back-end.herokuapp.com/api",
+		headers: {
+			Authorization: localStorage.getItem("token"),
+		},
+	});
 };

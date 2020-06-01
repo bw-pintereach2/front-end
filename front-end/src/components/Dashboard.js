@@ -1,9 +1,6 @@
-import React from 'react'
+import React from "react";
+import NavBar from "./NavBar";
 
 export default function Dashboard() {
-    return (
-        <div>
-            HEY
-        </div>
-    )
+	return <div>{/* <NavBar /> */}</div>;
 }
